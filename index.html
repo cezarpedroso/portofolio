@@ -3,39 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cezar Pedroso - Software Engineer & IT Student</title>
-    <meta name="description" content="Professional portfolio of Cezar Pedroso, Software Engineering and IT student at William Penn University, specializing in Python, C#, Web Development, and Cybersecurity.">
-    <meta name="keywords" content="Cezar Pedroso, Software Engineer, IT, Python, C#, Web Development, Cybersecurity, William Penn University">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta name="description" content="Cezar Pedroso - Software Engineering Student & Cybersecurity Enthusiast Portfolio">
+    <meta name="keywords" content="Cezar Pedroso, Software Engineering, Cybersecurity, Portfolio, Web Development">
+    <meta name="author" content="Cezar Pedroso">
+    <title>Cezar Pedroso - Software Engineer</title>
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h2>Cezar Pedroso</h2>
+                <a href="#home">Cezar Pedroso</a>
             </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
-            <div class="hamburger">
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#repositories" class="nav-link">Repositories</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -44,145 +41,80 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero" id="home">
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        Hi, I'm <span class="highlight">Cezar Pedroso</span>
-                    </h1>
-                    <p class="hero-subtitle">Software Engineer & IT Student</p>
-                    <p class="hero-description">
-                        Passionate about cybersecurity, web development, and innovative software solutions. 
-                        Currently pursuing B.S. in Software Engineering & Information Technology at William Penn University.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">
-                            <i class="fas fa-code"></i>
-                            View Projects
-                        </a>
-                        <a href="assets/Cezar_Resume.pdf" download="Cezar_Pedroso_Resume.pdf" class="btn btn-secondary">
-                            <i class="fas fa-download"></i>
-                            Download Resume
-                        </a>
-                    </div>
+                <h1 class="hero-title">
+                    Hi, I'm <span class="highlight">Cezar Pedroso</span>
+                </h1>
+                <h2 class="hero-subtitle">Software Engineer & IT Student</h2>
+                <p class="hero-description">
+                    Passionate about developing secure, efficient software solutions and learning about cybersecurity.
+                    Currently pursuing B.S. in Software Engineering with a minor in Information Technology at William Penn University.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="assets/resume.pdf" target="_blank" class="btn btn-resume">
+                        <i class="fas fa-download"></i>
+                        Download Resume
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
                 </div>
-                <div class="hero-image">
-                    <div class="image-container">
-                        <img src="assets/cezar-photo.jpg" alt="Cezar Pedroso - Professional Developer" class="profile-image">
-                    </div>
+                <div class="hero-social">
+                    <a href="https://github.com/cezarpedroso" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/cezaramp" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section class="about" id="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>
-                        I'm a dedicated Software Engineering and IT student at William Penn University, 
-                        graduating in December 2026 with a 3.5 GPA and a Business Management minor. 
-                        I've been on the Dean's List for 4 semesters and have hands-on experience in web and software development, 
-                        cybersecurity, and system administration.
+                    <p class="about-intro">
+                        I'm a dedicated Software Engineering student at William Penn University with a passion for both 
+                        software development and cybersecurity. My journey in technology has been driven by curiosity 
+                        and a desire to create secure, innovative solutions.
                     </p>
-                    <p>
-                        My experience includes internships where I've built and deployed websites, 
-                        managed backend infrastructure, and developed security tools. I'm fluent in multiple 
-                        programming languages and passionate about creating secure, efficient solutions.
-                    </p>
-                </div>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Programming Languages</h3>
-                        <div class="skills">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">C#</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">Go</span>
-                            <span class="skill-tag">HTML/CSS</span>
-                            <span class="skill-tag">Bash</span>
-                            <span class="skill-tag">PowerShell</span>
+                    
+                    <div class="education">
+                        <h3>Education</h3>
+                        <div class="education-item">
+                            <h4>William Penn University</h4>
+                            <p class="degree">B.S. in Software Engineering, Minor in Information Technology</p>
+                            <p class="gpa">GPA: 3.5/4.0 | Jan 2023 – Dec 2026</p>
+                            <p class="location">Oskaloosa, IA</p>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <h3>Databases & Data</h3>
-                        <div class="skills">
-                            <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">Pandas</span>
-                            <span class="skill-tag">JSON</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Frameworks & Tools</h3>
-                        <div class="skills">
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Unity</span>
-                            <span class="skill-tag">Git/GitHub</span>
-                            <span class="skill-tag">WordPress</span>
-                            <span class="skill-tag">cPanel</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Specializations</h3>
-                        <div class="skills">
-                            <span class="skill-tag">Cybersecurity</span>
-                            <span class="skill-tag">Network Administration</span>
-                            <span class="skill-tag">Web Development</span>
-                            <span class="skill-tag">System Administration</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">May 2025 – Aug 2025</div>
-                    <div class="timeline-content">
-                        <h3>Web Development Intern</h3>
-                        <h4>Jeremy Empie Web Design LLC</h4>
-                        <ul>
-                            <li>Built and deployed 7 websites using WordPress, HTML/CSS, JavaScript, and PHP</li>
-                            <li>Managed backend infrastructure using cPanel, including databases and security</li>
-                            <li>Improved office infrastructure by configuring network equipment</li>
-                            <li>Configured Raspberry Pi devices for internal tools</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">Jul 2024 – Present</div>
-                    <div class="timeline-content">
-                        <h3>Resident Assistant</h3>
-                        <h4>William Penn University - Student Services</h4>
-                        <ul>
-                            <li>Coordinate and supervise a residential community of 100+ students</li>
-                            <li>Lead and coordinate a team of 6+ resident assistants</li>
-                            <li>Enforce campus policies and respond to emergencies</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">Sep 2023 – May 2024</div>
-                    <div class="timeline-content">
-                        <h3>Lab Assistant</h3>
-                        <h4>William Penn University - Computers & Tech Lab</h4>
-                        <ul>
-                            <li>Assisted 60+ students with technical issues and code debugging</li>
-                            <li>Mentored 3+ students during their final projects</li>
-                            <li>Maintained lab computers for optimal functionality and security</li>
-                        </ul>
+                    <div class="experience">
+                        <h3>Experience</h3>
+                        <div class="experience-item">
+                            <h4>Jeremy Empie Web Design LLC</h4>
+                            <p class="role">Intern | May 2025 – Jul 2025</p>
+                            <ul>
+                                <li>Developed and deployed 7 responsive websites using WordPress, HTML/CSS, JavaScript, and PHP</li>
+                                <li>Managed backend infrastructure via cPanel, administering MySQL databases and DNS configurations</li>
+                                <li>Installed and optimized office networking equipment</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <h4>WPU: Computers & Tech Lab</h4>
+                            <p class="role">Lab Assistant | Sep 2023 – Present</p>
+                            <ul>
+                                <li>Assisted 120+ students with technical issues and programming challenges</li>
+                                <li>Mentored students on final-year projects</li>
+                                <li>Maintained lab computers for security and functionality</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -190,138 +122,209 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <section class="projects" id="projects">
         <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="security">Security</button>
-                <button class="filter-btn" data-filter="web">Web Dev</button>
-                <button class="filter-btn" data-filter="game">Game Dev</button>
-            </div>
-            
-            <!-- Featured Projects -->
-            <div class="featured-projects">
-                <div class="project-card featured" data-category="security">
-                    <div class="project-image">
-                        <i class="fas fa-shield-alt"></i>
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-shield-alt project-icon"></i>
+                        <h3>Vulnerability Scanner & Automated Exploitation Tool</h3>
                     </div>
                     <div class="project-content">
-                        <h3>Vulnerability Scanner</h3>
-                        <p>A Python tool that combines Nmap scanning with Metasploit exploitation to find security vulnerabilities in networks , test exploits safely, generate PDF reports and CSV/JSON logs.</p>
+                        <p class="project-description">
+                            Developed an automated vulnerability scanner integrating Nmap and Metasploit for CVE detection 
+                            and exploitation with 90% accuracy in test environments.
+                        </p>
+                        <ul class="project-features">
+                            <li>Dynamic PDF reporting system with risk assessments</li>
+                            <li>Automated exploit execution via Metasploit RC scripts</li>
+                            <li>Reduced manual testing time by 40%</li>
+                            <li>Modular JSON CVE database</li>
+                        </ul>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Nmap</span>
-                            <span class="tech-tag">CVE Database</span>
-                            <span class="tech-tag">PDF Generation</span>
+                            <span class="tech-tag">Metasploit</span>
+                            <span class="tech-tag">CVE</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card featured" data-category="security">
-                    <div class="project-image">
-                        <i class="fas fa-lock"></i>
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-lock project-icon"></i>
+                        <h3>Encrypted File Vault</h3>
                     </div>
                     <div class="project-content">
-                        <h3>Secure File Vault</h3>
-                        <p>Secure file encryption tool using AES-256-GCM encryption with Argon2 password-based key derivation. Features encrypted metadata storage and secure file deletion capabilities.</p>
+                        <p class="project-description">
+                            Designed and implemented a secure file encryption system ensuring confidentiality and 
+                            integrity of stored files with military-grade encryption.
+                        </p>
+                        <ul class="project-features">
+                            <li>AES-256-GCM encryption system</li>
+                            <li>Argon2 password-based key derivation</li>
+                            <li>Encrypted metadata storage</li>
+                            <li>Secure deletion features to prevent data recovery</li>
+                        </ul>
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">AES-256-GCM</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">AES-256</span>
                             <span class="tech-tag">Argon2</span>
                             <span class="tech-tag">Cryptography</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card featured" data-category="game">
-                    <div class="project-image">
-                        <i class="fas fa-robot"></i>
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-network-wired project-icon"></i>
+                        <h3>Reverse Proxy Gateway</h3>
                     </div>
                     <div class="project-content">
-                        <h3>AI Chatbot in Unity</h3>
-                        <p>In-game AI chatbot built with C# in Unity, integrating OpenAI's GPT API for dynamic NPC dialogue. Implemented TCP client-server architecture for real-time message exchange.</p>
+                        <p class="project-description">
+                            Built a production-ready reverse proxy using YARP, implementing load balancing, 
+                            route transformations, and a catch-all fallback system.
+                        </p>
+                        <ul class="project-features">
+                            <li>Load balancing and route transformations</li>
+                            <li>Mock API services for routing demonstration</li>
+                            <li>Container-ready architecture for deployment scalability</li>
+                            <li>Deployed multiple demo backend services to AWS EC2</li>
+                        </ul>
                         <div class="project-tech">
+                            <span class="tech-tag">.NET 8</span>
                             <span class="tech-tag">C#</span>
-                            <span class="tech-tag">Unity</span>
-                            <span class="tech-tag">OpenAI API</span>
-                            <span class="tech-tag">TCP/IP</span>
+                            <span class="tech-tag">YARP</span>
+                            <span class="tech-tag">AWS EC2</span>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- GitHub Repositories -->
-            <div class="github-section">
-                <h3>GitHub Repositories</h3>
-                <div id="github-repos" class="repos-grid">
-                    <div class="loading">
-                        <i class="fas fa-spinner fa-spin"></i>
-                        <p>Loading repositories...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-category">
+                    <h3>Programming & Scripting</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">PowerShell</span>
                     </div>
                 </div>
-                <div class="github-link">
-                    <a href="https://github.com/cezarpedroso" target="_blank" class="btn btn-outline">
-                        <i class="fab fa-github"></i>
-                        View All on GitHub
-                    </a>
+
+                <div class="skill-category">
+                    <h3>Databases & Tools</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">JSON</span>
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Unity</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Azure</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Networking & Systems</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Linux Administration</span>
+                        <span class="skill-tag">Routing & Switching</span>
+                        <span class="skill-tag">Active Directory</span>
+                        <span class="skill-tag">Cybersecurity</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">English (Fluent)</span>
+                        <span class="skill-tag">Portuguese (Fluent)</span>
+                        <span class="skill-tag">Spanish (Advanced)</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Repositories Section -->
+    <section class="repositories" id="repositories">
+        <div class="container">
+            <h2 class="section-title">GitHub Repositories</h2>
+            <div class="repositories-container">
+                <div id="repositories-loading" class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading repositories...</p>
+                </div>
+                <div id="repositories-grid" class="repositories-grid"></div>
+                <div id="repositories-error" class="error-message" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Unable to load repositories. Please visit my <a href="https://github.com/cezarpedroso" target="_blank">GitHub profile</a> directly.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p><a href="mailto:cezarapedroso@gmail.com">cezarapedroso@gmail.com</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Phone</h3>
-                            <p><a href="tel:641-931-0461">641-931-0461</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Oskaloosa, IA</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <div>
-                            <h3>GitHub</h3>
-                            <p><a href="https://github.com/cezarpedroso" target="_blank">github.com/cezarpedroso</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <div>
-                            <h3>LinkedIn</h3>
-                            <p><a href="https://linkedin.com/in/cezarpedroso641" target="_blank">linkedin.com/in/cezarpedroso641</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-text">
-                    <p>
-                        I'm always interested in new opportunities and collaborations. 
-                        Whether you have a project in mind or just want to connect, 
-                        feel free to reach out!
+                    <p class="contact-description">
+                        I'm open to intern and full-time positions, collaborating on interesting projects, 
+                        or simply connecting with other developers. Feel free to reach out!
                     </p>
-                    <p>
-                        Currently looking for internships opportunities
-                        in software development, cybersecurity, or IT roles.
-                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:cezarapedroso@gmail.com">cezarapedroso@gmail.com</a>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+16419310461">641-931-0461</a>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Oskaloosa, IA</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-links">
+                        <a href="https://github.com/cezarpedroso" target="_blank" class="contact-link">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        
+                        <a href="https://www.linkedin.com/in/cezaramp" target="_blank" class="contact-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        
+                        <a href="assets/resume.pdf" target="_blank" class="contact-link">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Resume</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -332,21 +335,12 @@
         <div class="container">
             <div class="footer-content">
                 <p>&copy; 2025 Cezar Pedroso. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://github.com/cezarpedroso" target="_blank" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/cezarpedroso641" target="_blank" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="mailto:cezarapedroso@gmail.com" aria-label="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
+                <p>Built with HTML, CSS, and JavaScript</p>
             </div>
         </div>
     </footer>
 
+    <!-- Custom JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
