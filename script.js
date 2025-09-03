@@ -1,3 +1,4 @@
+// Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -45,11 +46,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', function() {
     const navbar = document.getElementById('navbar');
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(15, 23, 42, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)';
     } else {
-        navbar.style.background = 'rgba(15, 23, 42, 0.95)';
-        navbar.style.boxShadow = 'none';
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.boxShadow = '0 1px 2px 0 rgba(0, 0, 0, 0.05)';
     }
 });
 
@@ -70,15 +71,15 @@ function revealOnScroll() {
 
 window.addEventListener('scroll', revealOnScroll);
 
-// Add scroll-reveal class to elements that should animate
+// Minimal animations for corporate look
 document.addEventListener('DOMContentLoaded', function() {
-    const animateElements = document.querySelectorAll('.project-card, .skill-category, .about-content, .contact-content');
+    // Remove all scroll animations for maximum professionalism
+    const animateElements = document.querySelectorAll('.scroll-reveal');
     animateElements.forEach(el => {
-        el.classList.add('scroll-reveal');
+        el.classList.remove('scroll-reveal');
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
     });
-    
-    // Initial check for elements in view
-    revealOnScroll();
 });
 
 // GitHub Repositories Fetcher
@@ -251,7 +252,7 @@ window.addEventListener('scroll', updateActiveNavLink);
 const style = document.createElement('style');
 style.textContent = `
     .nav-link.active {
-        color: var(--primary-color) !important;
+        color: var(--secondary-color) !important;
     }
     .nav-link.active::after {
         width: 100% !important;
