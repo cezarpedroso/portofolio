@@ -1,324 +1,891 @@
-// Mobile Navigation Toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    // Toggle mobile menu
-    navToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
+html {
+    scroll-behavior: smooth;
+}
 
-    // Close mobile menu when clicking on a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        });
-    });
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: #ffffff;
+}
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        }
-    });
-});
+/* Variables */
+:root {
+    --primary-color: #000000;
+    --secondary-color: #1e40af;
+    --accent-color: #3b82f6;
+    --text-primary: #000000;
+    --text-secondary: #4b5563;
+    --text-light: #6b7280;
+    --background-light: #1a1a1a;
+    --background-dark: #000000;
+    --background-darker: #000000;
+    --border-color: #333333;
+    --card-background: #2a2a2a;
+    --shadow-light: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-large: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --transition: all 0.15s ease;
+}
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 70; // Account for fixed navbar
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
 
-// Navbar background change on scroll
-window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = '0 1px 2px 0 rgba(0, 0, 0, 0.05)';
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    transition: var(--transition);
+    box-shadow: var(--shadow-light);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.nav-logo a:hover {
+    color: var(--secondary-color);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    transition: var(--transition);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: var(--background-dark);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: none;
+    opacity: 0;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    max-width: 700px;
+    text-align: center;
+}
+
+.hero-profile {
+    margin-bottom: 2rem;
+}
+
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.highlight {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.btn {
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    border: 2px solid var(--secondary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-resume {
+    background-color: transparent;
+    color: white;
+    border: 2px solid #ffffff;
+}
+
+.btn-resume:hover {
+    background-color: #ffffff;
+    color: var(--background-dark);
+    border-color: #ffffff;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: none;
+}
+
+.hero-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: none;
+}
+
+/* Section Styles */
+section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+}
+
+/* About Section */
+.about {
+    background-color: var(--background-light);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-intro {
+    font-size: 1.1rem;
+    color: #d1d5db;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.education, .experience {
+    margin-bottom: 3rem;
+}
+
+.education h3, .experience h3 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.education-item, .experience-item {
+    background: var(--card-background);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium);
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.education-item:hover, .experience-item:hover {
+    box-shadow: var(--shadow-medium);
+    transform: none;
+}
+
+.education-item h4, .experience-item h4 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.degree, .role {
+    font-weight: 600;
+    color: #e5e7eb;
+    margin-bottom: 0.25rem;
+}
+
+.gpa, .location {
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+.experience-item ul {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+}
+
+.experience-item li {
+    color: #d1d5db;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: var(--card-background);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.project-card:hover {
+    box-shadow: var(--shadow-medium);
+    transform: none;
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-icon {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(30, 64, 175, 0.1);
+    border-radius: 8px;
+}
+
+.project-card h3 {
+    font-size: 1.25rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.project-description {
+    color: #d1d5db;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-features {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.project-features li {
+    color: #d1d5db;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.project-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-tag {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--secondary-color);
+}
+
+/* Skills Section */
+.skills {
+    background-color: var(--background-darker);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background: var(--card-background);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.skill-category:hover {
+    box-shadow: var(--shadow-medium);
+    transform: none;
+}
+
+.skill-category h3 {
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.skill-tag {
+    background-color: var(--background-light);
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.skill-tag:hover {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    border-color: var(--secondary-color);
+}
+
+/* Repositories Section */
+.repositories-container {
+    position: relative;
+    min-height: 200px;
+}
+
+.repositories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.repo-card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-medium);
+}
+
+.repo-card:hover {
+    box-shadow: var(--shadow-medium);
+    transform: none;
+}
+
+.repo-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.repo-icon {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+.repo-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.repo-name:hover {
+    color: var(--secondary-color);
+}
+
+.repo-description {
+    color: #d1d5db;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.repo-stats {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #9ca3af;
+}
+
+.repo-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.repo-language {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid var(--secondary-color);
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: #d1d5db;
+}
+
+.loading i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.error-message {
+    text-align: center;
+    padding: 3rem;
+    color: #d1d5db;
+}
+
+.error-message i {
+    font-size: 2rem;
+    color: #ef4444;
+    margin-bottom: 1rem;
+}
+
+.error-message a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.error-message a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Section */
+.contact {
+    background-color: var(--background-light);
+}
+
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-description {
+    font-size: 1.1rem;
+    color: #d1d5db;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+}
+
+.contact-item i {
+    color: var(--secondary-color);
+    font-size: 1.25rem;
+    width: 24px;
+}
+
+.contact-item a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-item a:hover {
+    color: var(--secondary-color);
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: var(--card-background);
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition);
+    border: 2px solid var(--border-color);
+}
+
+.contact-link:hover {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    transform: none;
+    box-shadow: var(--shadow-medium);
+    border-color: var(--secondary-color);
+}
+
+.contact-link i {
+    font-size: 1.25rem;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--background-darker);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-content p {
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow-medium);
+        padding: 2rem 0;
+        border-top: 1px solid var(--border-color);
     }
-});
 
-// Scroll reveal animation
-function revealOnScroll() {
-    const reveals = document.querySelectorAll('.scroll-reveal');
-    
-    reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < windowHeight - elementVisible) {
-            element.classList.add('active');
-        }
-    });
-}
-
-window.addEventListener('scroll', revealOnScroll);
-
-// Minimal animations for corporate look
-document.addEventListener('DOMContentLoaded', function() {
-    // Remove all scroll animations for maximum professionalism
-    const animateElements = document.querySelectorAll('.scroll-reveal');
-    animateElements.forEach(el => {
-        el.classList.remove('scroll-reveal');
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-    });
-});
-
-// GitHub Repositories Fetcher
-async function fetchGitHubRepositories() {
-    const username = 'cezarpedroso';
-    const apiUrl = `https://api.github.com/users/${username}/repos`;
-    
-    const loadingElement = document.getElementById('repositories-loading');
-    const gridElement = document.getElementById('repositories-grid');
-    const errorElement = document.getElementById('repositories-error');
-    
-    try {
-        loadingElement.style.display = 'flex';
-        errorElement.style.display = 'none';
-        gridElement.innerHTML = '';
-        
-        const response = await fetch(apiUrl);
-        
-        if (!response.ok) {
-            throw new Error(`GitHub API error: ${response.status}`);
-        }
-        
-        const repositories = await response.json();
-        
-        // Filter out forked repositories and sort by creation date (newest first)
-        const originalRepos = repositories
-            .filter(repo => !repo.fork)
-            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-        
-        loadingElement.style.display = 'none';
-        
-        if (originalRepos.length === 0) {
-            gridElement.innerHTML = '<p class="no-repos">No public repositories found.</p>';
-            return;
-        }
-        
-        // Display repositories
-        originalRepos.forEach(repo => {
-            const repoCard = createRepositoryCard(repo);
-            gridElement.appendChild(repoCard);
-        });
-        
-    } catch (error) {
-        console.error('Error fetching repositories:', error);
-        loadingElement.style.display = 'none';
-        errorElement.style.display = 'block';
-        
-        // Still show error message but make it more user-friendly
-        if (error.message.includes('403')) {
-            errorElement.innerHTML = `
-                <i class="fas fa-exclamation-triangle"></i>
-                <p>GitHub API rate limit reached. Please visit my <a href="https://github.com/${username}" target="_blank">GitHub profile</a> directly to view repositories.</p>
-            `;
-        }
+    .nav-menu.active {
+        left: 0;
     }
-}
 
-// Create repository card element
-function createRepositoryCard(repo) {
-    const card = document.createElement('div');
-    card.className = 'repo-card scroll-reveal';
-    
-    // Format the date
-    const updatedDate = new Date(repo.updated_at).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-    });
-    
-    // Create language badge if language exists
-    const languageBadge = repo.language 
-        ? `<span class="repo-language">${repo.language}</span>` 
-        : '';
-    
-    // Create description with fallback
-    const description = repo.description 
-        ? `<p class="repo-description">${escapeHtml(repo.description)}</p>`
-        : '<p class="repo-description">No description available</p>';
-    
-    card.innerHTML = `
-        <div class="repo-header">
-            <i class="fab fa-github repo-icon"></i>
-            <a href="${repo.html_url}" target="_blank" class="repo-name">${escapeHtml(repo.name)}</a>
-        </div>
-        ${description}
-        <div class="repo-stats">
-            <div class="repo-stat">
-                <i class="fas fa-star"></i>
-                <span>${repo.stargazers_count}</span>
-            </div>
-            <div class="repo-stat">
-                <i class="fas fa-code-branch"></i>
-                <span>${repo.forks_count}</span>
-            </div>
-            <div class="repo-stat">
-                <i class="fas fa-clock"></i>
-                <span>${updatedDate}</span>
-            </div>
-            ${languageBadge}
-        </div>
-    `;
-    
-    return card;
-}
-
-// Utility function to escape HTML
-function escapeHtml(unsafe) {
-    return unsafe
-         .replace(/&/g, "&amp;")
-         .replace(/</g, "&lt;")
-         .replace(/>/g, "&gt;")
-         .replace(/"/g, "&quot;")
-         .replace(/'/g, "&#039;");
-}
-
-// Initialize GitHub repositories when the page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Add a small delay to ensure the section is visible
-    setTimeout(fetchGitHubRepositories, 500);
-});
-
-// Intersection Observer for better scroll animations
-if ('IntersectionObserver' in window) {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-    
-    // Observe elements when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-        const elementsToObserve = document.querySelectorAll('.scroll-reveal');
-        elementsToObserve.forEach(el => observer.observe(el));
-    });
-}
-
-// Active navigation link highlighting
-function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-}
-
-window.addEventListener('scroll', updateActiveNavLink);
-
-// Add active class styles
-const style = document.createElement('style');
-style.textContent = `
-    .nav-link.active {
-        color: var(--secondary-color) !important;
+    .nav-toggle {
+        display: flex;
     }
-    .nav-link.active::after {
-        width: 100% !important;
-    }
-`;
-document.head.appendChild(style);
 
-// Typing animation for hero title (optional enhancement)
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    
-    type();
-}
-
-// Performance optimization: Throttle scroll events
-function throttle(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Apply throttling to scroll events
-const throttledScroll = throttle(() => {
-    updateActiveNavLink();
-    revealOnScroll();
-}, 16); // ~60fps
-
-window.removeEventListener('scroll', updateActiveNavLink);
-window.removeEventListener('scroll', revealOnScroll);
-window.addEventListener('scroll', throttledScroll);
-
-// Add loading states and error handling for better UX
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
-});
-
-// Handle potential errors gracefully
-window.addEventListener('error', function(e) {
-    console.error('JavaScript error:', e.error);
-});
-
-// Add CSS for loaded state
-const loadedStyle = document.createElement('style');
-loadedStyle.textContent = `
-    body:not(.loaded) .scroll-reveal {
+    .nav-toggle.active .bar:nth-child(2) {
         opacity: 0;
-        transform: translateY(50px);
     }
-    
-    body.loaded .scroll-reveal {
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
     }
-`;
-document.head.appendChild(loadedStyle);
+
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .repositories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-details {
+        align-items: center;
+    }
+
+    .contact-item {
+        justify-content: flex-start;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-link {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .project-card, .skill-category {
+        padding: 1.5rem;
+    }
+
+    .education-item, .experience-item {
+        padding: 1.5rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Scroll animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
